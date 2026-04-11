@@ -3,4 +3,122 @@ body {
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
+  max-width: 110ch;
+  margin-inline: auto;
+  padding: 40px;
+
+}
+
+ul {
+  display: contents;
+}
+li {
+  display: contents;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 2em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(63.675% 0.00474 197.881);
+}
+a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+a.current {
+  border-bottom-width: 0.4em;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(58.8% 0.00243 198.607);
+  padding-bottom: 0.1em;
+  font-weight: bold;
+}
+
+html {
+  accent-color: var(--color-accent);
+  --color-accent: oklch(35.6% 0.09235 151.022);
+}
+
+a:hover {
+  border-bottom-color: oklch(58.8% 0.00243 198.607);
+  color: var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+input, textarea, button {
+  font: inherit;
+  /* display: block;
+  width: 100%;
+  box-sizing: border-box; */
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;;
+}
+
+button {
+  text-align: center;
+  /* display: grid;
+  grid-template-columns: subgrid; */
+  grid-column: 1 / -1;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 10px 20px;
+}
+
+article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+h2 {
+  margin: 0;
+}
+h1 {
+  font-size: 350%
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.resume {
+  display: block;
+}
+
+.resume article {
+  display: block;
+}
+
+.resume-header {
+  margin-bottom: 1em;
+}
+
+section {
+  margin-bottom: 1.5em;
+}
+
+.entry {
+  margin-bottom: 1em;
+}
+
+.entry-header,
+.entry-subheader {
+  display: flex;
+  justify-content: space-between;
 }
