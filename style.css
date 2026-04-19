@@ -40,13 +40,14 @@ a.current {
 
 html {
   accent-color: var(--color-accent);
-  --color-accent: oklch(35.6% 0.09235 151.022);
+  --color-accent: oklch(41.241% 0.10104 152.135);
+  color-scheme: light dark
 }
 
 a:hover {
-  border-bottom-color: oklch(58.8% 0.00243 198.607);
-  color: var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  border-bottom-color: var(--border-color);
+  color: color-mix(in oklch, var(--color-accent), canvas 0%);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 input, textarea, button {
@@ -121,4 +122,15 @@ section {
 .entry-subheader {
   display: flex;
   justify-content: space-between;
+}
+
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  /* ... other styles and nested rules ... */
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
