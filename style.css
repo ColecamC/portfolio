@@ -134,3 +134,33 @@ label.color-scheme {
   top: 1rem;
   right: 1rem;
 }
+
+#profile-stats {
+  margin-block: 2em;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
+  border-radius: 0.5em;
+  padding: 1em;
+  gap: 0.5em 0;
+  margin: 0;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-accent);
+}

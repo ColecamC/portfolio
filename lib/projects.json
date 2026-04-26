@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Playing Card Value Detector",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Designed a machine learning model to classify playing card values from pictures using a neural network and PCA.",
+        "year": 2024
+    },
+    {
+        "title": "Friends Visualization / Lyrics App",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Implemented text processing and data visualization for sentiment analysis and lyric recognition, earning 98%+ on both DSC10 midterm and final projects.",
+        "year": 2024
+    },
+    {
+        "title": "DIYA Bootcamp Capstone Project",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Visualized what methods students used to attend online school, developing foundational Python data science skills with Pandas, matplotlib, and seaborn.",
+        "year": 2022
+    },
+    {
+        "title": "Personal Website",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Built a responsive personal website using HTML, CSS, and JavaScript to showcase projects and experience.",
+        "year": 2026
+    },
+    {
+        "title": "Predictive Recipe Analysis",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Created a machine learning model to predict recipe ratings based on ingredients and cooking methods.",
+        "year": 2024
+    },
+    {
+        "title": "Project Placeholder 1",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 2",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 3",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 4",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 5",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 6",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    },
+    {
+        "title": "Project Placeholder 7",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Description coming soon.",
+        "year": 2025
+    }
+]
