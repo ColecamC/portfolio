@@ -347,3 +347,12 @@ circle.selected {
   font-weight: bold;
   color: var(--color-accent);
 }
+
+#commit-filter {
+  flex: 1;
+  align-items: baseline;
+}
+
+#commit-time {
+  margin-left: auto;
+}
