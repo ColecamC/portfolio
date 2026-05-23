@@ -416,7 +416,7 @@ d3.select('#scatter-story')
   );
 
 function onStepEnter(response) {
-  console.log(response.element.__data__.datetime);
+  // console.log(response.element.__data__.datetime);
   commitProgress = timeScale(response.element.__data__.datetime);
   commitMaxTime = timeScale.invert(commitProgress);
   commitTime.textContent = commitMaxTime.toLocaleString('en', { dateStyle: 'long', timeStyle: 'short' });
