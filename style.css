@@ -252,6 +252,12 @@ path {
   color: var(--color-accent);
 }
 
+.x-axis text,
+.y-axis text {
+  font-size: 1.15rem;
+  fill: currentColor;
+}
+
 .gridlines line {
   stroke: currentColor;
   opacity: 0.15;
@@ -290,12 +296,17 @@ dl.info dd {
   position: fixed;
   top: 1em;
   left: 1em;
+  z-index: 10;
 }
 
 circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
+  @starting-style {
+    r: 0;
+    
+  }
 }
 
 circle:hover {
@@ -356,3 +367,71 @@ circle.selected {
 #commit-time {
   margin-left: auto;
 }
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+
+    small {
+      display: block;
+      font-size: 0.75em;
+      opacity: 0.5;
+    }
+  }
+
+  .loc {
+    display: flex;
+    width: 0.25em;
+    aspect-ratio: 1;
+    background: var(--color);
+    border-radius: 50%;
+  }
+
+  dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.2em;
+    margin-left: 0;
+  }
+}
+
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+
+  > * {
+    flex: 1;
+  }
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+}
+
+.step {
+  padding-bottom: 14vh;
+}
+

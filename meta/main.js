@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
 async function loadData() {
   const data = await d3.csv('loc.csv', (row) => ({
@@ -39,7 +40,8 @@ function processCommits(data) {
       });
 
       return ret;
-    });
+    })
+    .sort((a, b) => a.datetime - b.datetime);
 }
 
 
@@ -291,14 +293,48 @@ commitTime.textContent = "any time";
 
 // Will get updated as user changes slider
 let filteredCommits = commits;
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+
+function updateFileDisplay(filteredCommits) {
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    })
+    .sort((a, b) => b.lines.length - a.lines.length);
+  let filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt');
+          div.append('dd');
+        }),
+    );
+
+  filesContainer.select('dt').html((d) => `<code>${d.name}</code><small>${d.lines.length} lines</small>`);
+  filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data((d) => d.lines)
+    .join('div')
+    .attr('class', 'loc')
+    .attr('style', (d) => `--color: ${colors(d.type)}`);
+}
+
+updateFileDisplay(filteredCommits);
 
 function onTimeSliderChange(event) {
   commitProgress = event.target.value;
   commitMaxTime = timeScale.invert(commitProgress);
   commitTime.textContent = commitMaxTime.toLocaleString('en', { dateStyle: 'long', timeStyle: 'short' });
-  // ...previous code
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
   updateScatterPlot(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
 }
 commitFilter.addEventListener('input', onTimeSliderChange);
 
@@ -352,3 +388,47 @@ function updateScatterPlot(data, commits) {
       updateTooltipVisibility(false);
     });
 }
+
+
+d3.select('#scatter-story')
+  .selectAll('.step')
+  .data(commits)
+  .join('div')
+  .attr('class', 'step')
+  .html(
+    (d, i) => `
+		On ${d.datetime.toLocaleString('en', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    })},
+		I made <a href="${d.url}" target="_blank">${
+      i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+    }</a>.
+		I edited ${d.totalLines} lines across ${
+      d3.rollups(
+        d.lines,
+        (D) => D.length,
+        (d) => d.file,
+      ).length
+    } files.
+		Then I looked over all I had made, and I saw that it was very good.
+	`,
+  );
+
+function onStepEnter(response) {
+  console.log(response.element.__data__.datetime);
+  commitProgress = timeScale(response.element.__data__.datetime);
+  commitMaxTime = timeScale.invert(commitProgress);
+  commitTime.textContent = commitMaxTime.toLocaleString('en', { dateStyle: 'long', timeStyle: 'short' });
+  filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+  updateScatterPlot(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
+}
+
+const scroller = scrollama();
+scroller
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);
